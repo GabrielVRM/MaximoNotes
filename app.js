@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 require('./config/database')
+const cors = require("cors")
 
 const notesRouter = require('./app/routes/notes');
 const usersRouter = require('./app/routes/users');
@@ -15,6 +16,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', usersRouter);
 app.use('/notes', notesRouter);
-
+app.use(cors());
 
 module.exports = app;
